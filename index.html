@@ -433,5 +433,78 @@ function toggleMenu() {
 }
 </style>
 
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>Protected Page</title>
+
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    #warning {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: red;
+      color: white;
+      font-size: 22px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Website Content</h2>
+
+<div id="warning">
+  ⚠ DevTools Detected<br>
+  Contact Prof Yash
+</div>
+
+<script>
+  let warningBox = document.getElementById("warning");
+
+  function showWarning() {
+    warningBox.style.display = "flex";
+  }
+
+  // Block right click
+  document.addEventListener("contextmenu", e => e.preventDefault());
+
+  // Detect keyboard shortcuts
+  document.addEventListener("keydown", function(e) {
+    if (
+      e.keyCode == 123 || // F12
+      (e.ctrlKey && e.shiftKey && e.keyCode == 73) || // Ctrl+Shift+I
+      (e.ctrlKey && e.shiftKey && e.keyCode == 74) || // Ctrl+Shift+J
+      (e.ctrlKey && e.keyCode == 85) // Ctrl+U
+    ) {
+      showWarning();
+      e.preventDefault();
+    }
+  });
+
+  // Detect DevTools resize trick
+  setInterval(function() {
+    if (window.outerWidth - window.innerWidth > 150 ||
+        window.outerHeight - window.innerHeight > 150) {
+      showWarning();
+    }
+  }, 500);
+</script>
+
+</body>
+</html>
+
 </body>
 </html>

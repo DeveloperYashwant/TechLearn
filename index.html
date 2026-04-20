@@ -432,79 +432,103 @@ function toggleMenu() {
   }
 }
 </style>
-
-  <!DOCTYPE html>
-<html>
-<head>
-  <title>Protected Page</title>
-
+<!--Hide Code  -->
   <style>
     body {
       font-family: Arial;
+      margin: 0;
+      padding: 0;
     }
 
-    #warning {
+    /* Main content */
+    #main {
+      padding: 30px;
+      transition: 0.3s;
+    }
+
+    /* Blur effect */
+    .blurred {
+      filter: blur(8px);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Lock screen */
+    #lock {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: red;
-      color: white;
-      font-size: 22px;
-      display: flex;
+      background: black;
+      color: red;
+      z-index: 99999;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      z-index: 9999;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      font-weight: bold;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
 
-<h2>Website Content</h2>
+<div id="main">
+  <h2>Secure Website Content</h2>
+  <p>This content is protected from inspection attempts.</p>
+</div>
 
-<div id="warning">
-  ⚠ DevTools Detected<br>
-  Contact Prof Yash
+<div id="lock">
+  ⚠ SECURITY ALERT<br><br>
+  DevTools Detected<br>
+  Contact Prof Yash<br>
+
+  <button onclick="location.reload()">Reload</button>
 </div>
 
 <script>
-  let warningBox = document.getElementById("warning");
+  let lock = document.getElementById("lock");
+  let main = document.getElementById("main");
 
-  function showWarning() {
-    warningBox.style.display = "flex";
+  function activateLock() {
+    lock.style.display = "flex";
+    main.classList.add("blurred");
   }
+
+  // Detect DevTools via window size change
+  setInterval(() => {
+    let widthDiff = window.outerWidth - window.innerWidth;
+    let heightDiff = window.outerHeight - window.innerHeight;
+
+    if (widthDiff > 150 || heightDiff > 150) {
+      activateLock();
+    }
+  }, 500);
 
   // Block right click
   document.addEventListener("contextmenu", e => e.preventDefault());
 
-  // Detect keyboard shortcuts
+  // Block shortcuts
   document.addEventListener("keydown", function(e) {
     if (
-      e.keyCode == 123 || // F12
-      (e.ctrlKey && e.shiftKey && e.keyCode == 73) || // Ctrl+Shift+I
-      (e.ctrlKey && e.shiftKey && e.keyCode == 74) || // Ctrl+Shift+J
-      (e.ctrlKey && e.keyCode == 85) // Ctrl+U
+      e.keyCode === 123 || // F12
+      (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
+      (e.ctrlKey && e.shiftKey && e.keyCode === 74) || // Ctrl+Shift+J
+      (e.ctrlKey && e.keyCode === 85) // Ctrl+U
     ) {
-      showWarning();
+      activateLock();
       e.preventDefault();
     }
   });
-
-  // Detect DevTools resize trick
-  setInterval(function() {
-    if (window.outerWidth - window.innerWidth > 150 ||
-        window.outerHeight - window.innerHeight > 150) {
-      showWarning();
-    }
-  }, 500);
 </script>
-
-</body>
-</html>
-
 </body>
 </html>

@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Full Stack Training - Yashwant Ghole</title>
+  <!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -382,70 +385,82 @@
 
 </section>
 
+
 <!-- FOOTER -->
-<footer class="bg-blue-700 text-white">
+<footer class="relative text-white">
 
-  <div class="max-w-6xl mx-auto px-6 py-10">
+  <!-- BACKGROUND LAYER -->
+  <div class="absolute inset-0 bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700"></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+  <!-- GLASS EFFECT LAYER -->
+  <div class="relative backdrop-blur-md bg-white/10 border-t border-white/20">
 
-      <!-- LEFT -->
-      <div class="text-center md:text-left">
+    <div class="max-w-6xl mx-auto px-6 py-10">
 
-        <h2 class="text-xl font-bold">Prof Yash</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 
-        <p class="text-blue-100 text-sm mt-2">
-          © 2026 All Rights Reserved
-        </p>
+        <!-- LEFT -->
+        <div class="text-center md:text-left">
+
+          <h2 class="text-2xl font-bold tracking-wide hover:scale-105 transition">
+            Prof Yash
+          </h2>
+
+          <p class="text-sm text-white/80 mt-2">
+            © 2026 All Rights Reserved
+          </p>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="text-center md:text-right space-y-3">
+
+          <!-- PHONE -->
+          <p class="flex items-center justify-center md:justify-end gap-2 text-white/80 hover:text-white transition">
+            <i class="fa-solid fa-phone"></i>
+            <a href="tel:7350059415" class="underline">
+              7350059415
+            </a>
+          </p>
+
+          <!-- LOCATION -->
+          <p class="flex items-center justify-center md:justify-end gap-2 text-white/80 hover:text-white transition">
+            <i class="fa-solid fa-location-dot"></i>
+            Dombivli, Maharashtra
+          </p>
+
+        </div>
 
       </div>
 
-      <!-- RIGHT -->
-      <div class="text-center md:text-right space-y-3">
+      <!-- SOCIAL ICONS -->
+      <div class="mt-8 flex justify-center gap-6 text-xl">
 
-        <!-- PHONE -->
-        <p class="text-sm text-blue-100 flex items-center justify-center md:justify-end gap-2">
-          <i class="fa-solid fa-phone"></i>
-          <a href="tel:7350059415" class="hover:text-white underline">
-            7350059415
-          </a>
-        </p>
+        <a href="#" class="hover:scale-125 hover:text-pink-300 transition">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
 
-        <!-- LOCATION -->
-        <p class="text-sm text-blue-100 flex items-center justify-center md:justify-end gap-2">
-          <i class="fa-solid fa-location-dot"></i>
-          Dombivli, Maharashtra
-        </p>
+        <a href="#" class="hover:scale-125 hover:text-green-300 transition">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+
+        <a href="#" class="hover:scale-125 hover:text-blue-300 transition">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
 
       </div>
 
-    </div>
+      <!-- BOTTOM -->
+      <div class="mt-6 border-t border-white/20 pt-4 text-center text-xs text-white/60">
+        Designed with modern UI & interactive effects
+      </div>
 
-    <!-- SOCIAL ICONS -->
-    <div class="mt-8 flex justify-center gap-6 text-lg">
-
-      <a href="#" class="hover:text-blue-200 transition">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-
-      <a href="#" class="hover:text-blue-200 transition">
-        <i class="fa-brands fa-whatsapp"></i>
-      </a>
-
-      <a href="#" class="hover:text-blue-200 transition">
-        <i class="fa-brands fa-linkedin"></i>
-      </a>
-
-    </div>
-
-    <!-- BOTTOM -->
-    <div class="mt-6 border-t border-blue-500 pt-4 text-center text-xs text-blue-200">
-      Designed with professionalism & simplicity
     </div>
 
   </div>
 
 </footer>
+  
   <script>
 
 // basic protection (NOT 100% secure)

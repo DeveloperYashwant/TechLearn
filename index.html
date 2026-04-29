@@ -3,603 +3,745 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Full Stack Training - Yashwant Ghole</title>
-  <!-- FONT AWESOME -->
+
+<title>TechLearn</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-
-<script src="https://cdn.tailwindcss.com"></script>
-
 <style>
-  body { scroll-behavior: smooth; }
+
+body { scroll-behavior:smooth; }
+section { padding:80px 0; }
+
+/* NAVBAR */
+.navbar { backdrop-filter:blur(10px); }
+
+/* HERO */
+.hero {
+height:100vh;
+background:linear-gradient(120deg,#eef2ff,#fff,#e0f2fe);
+position:relative;
+overflow:hidden;
+}
+
+/* TEXT */
+.gradient-text {
+background:linear-gradient(45deg,#0d6efd,#00c6ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* BUTTON */
+.btn-gradient {
+background:linear-gradient(45deg,#0d6efd,#ff7b00);
+color:white;
+border-radius:50px;
+padding:10px 25px;
+}
+.btn-gradient:hover { transform:scale(1.1); }
+
+/* FLOAT ICON */
+.float-icon {
+position:absolute;
+width:70px;
+animation:float 6s infinite;
+}
+.icon1 { top:15%; left:10%; }
+.icon2 { top:25%; right:10%; }
+.icon3 { bottom:15%; left:20%; }
+
+@keyframes float {
+0%{transform:translateY(0);}
+50%{transform:translateY(-20px);}
+100%{transform:translateY(0);}
+}
+
+/* CARDS */
+.card {
+border:none;
+border-radius:15px;
+transition:.3s;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+.card:hover { transform:translateY(-10px); }
+
+/* IMAGE */
+.course-img { height:220px; object-fit:cover; }
+
+/* ROADMAP */
+.timeline { border-left:3px solid #0d6efd; padding-left:20px; }
+.step {
+margin-bottom:20px;
+padding:10px;
+background:white;
+border-radius:8px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+position:relative;
+}
+.step::before {
+content:"";
+position:absolute;
+left:-28px;
+top:15px;
+width:12px;
+height:12px;
+background:#0d6efd;
+border-radius:50%;
+}
+
+/* FOOTER */
+.footer { background:linear-gradient(135deg,#0d6efd,#6610f2); }
+
+/* SOCIAL */
+.icon {
+width:45px;height:45px;
+display:inline-flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+color:white;
+margin:5px;
+}
+.whatsapp{background:#25D366;}
+.insta{background:#E1306C;}
+.linkedin{background:#0077b5;}
+
+/* FLOAT WHATSAPP */
+.whatsapp-float {
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:50%;
+}
+
+.roadmap-card i {
+  font-size: 22px;
+  transition: 0.3s;
+}
+
+.roadmap-card:hover i {
+  transform: scale(1.3) rotate(10deg);
+}
+
+/* CHAT */
+#chatBtn {
+position:fixed;
+bottom:90px;
+right:20px;
+background:#0d6efd;
+color:white;
+padding:15px;
+border-radius:50%;
+cursor:pointer;
+}
+#chatBox {
+position:fixed;
+bottom:150px;
+right:20px;
+width:300px;
+display:none;
+flex-direction:column;
+background:white;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+.chat-header {
+background:#0d6efd;color:white;padding:10px;
+display:flex;justify-content:space-between;
+}
+.chat-body { height:200px; overflow:auto; padding:10px; }
+.bot{background:#eee;padding:5px;margin:5px;}
+.user{background:#0d6efd;color:white;padding:5px;margin:5px;text-align:right;}
+
+.roadmap-card {
+  transition: 0.3s;
+  border-radius: 12px;
+}
+
+.roadmap-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.highlight-item i {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f1f3f5;
+  transition: 0.3s;
+}
+
+.highlight-item:hover i {
+  transform: scale(1.2);
+  background: #0d6efd;
+  color: white;
+}
+
+.about-img {
+  max-width: 320px;
+  transition: 0.3s;
+}
+.about-img:hover {
+  transform: scale(1.05);
+}
+
+
 </style>
-
-</head>
-
-<body class="bg-gray-50">
-
-<!-- NAVBAR -->
-<!-- NAVBAR -->
-<nav class="fixed w-full top-0 z-50 backdrop-blur-md bg-white/70 shadow-sm">
-
-  <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-
-    <!-- LOGO -->
-    <h1 class="text-xl font-bold text-blue-600">
-      Yashwant Ghole
-    </h1>
-
-    <!-- MENU (DESKTOP) -->
-    <div class="hidden md:flex space-x-6 font-medium">
-
-      <a href="#home" class="hover:text-blue-600 transition">Home</a>
-
-      <a href="#about" class="hover:text-blue-600 transition">About</a>
-
-      <a href="#roadmap" class="hover:text-blue-600 transition">Roadmap</a>
-
-      <a href="#courses" class="hover:text-blue-600 transition">Courses</a>
-
-      <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
-
-    </div>
-
-    <!-- CTA BUTTON -->
-    <a href="#contact"
-      class="hidden md:block bg-blue-600 text-white px-5 py-2 rounded-full shadow hover:bg-blue-700 transition">
-      Enroll Now
-    </a>
-
-    <!-- MOBILE MENU BUTTON -->
-    <button onclick="toggleMenu()" class="md:hidden text-2xl">
-      ☰
-    </button>
-
-  </div>
-
-  <!-- MOBILE MENU -->
-  <div id="mobileMenu" class="hidden md:hidden bg-white shadow px-6 py-4 space-y-3">
-
-    <a href="#home" class="block">Home</a>
-    <a href="#about" class="block">About</a>
-    <a href="#roadmap" class="block">Roadmap</a>
-    <a href="#courses" class="block">Courses</a>
-    <a href="#contact" class="block">Contact</a>
-
-    <a href="#contact"
-      class="block bg-blue-600 text-white text-center py-2 rounded">
-      Enroll Now
-    </a>
-
-  </div>
-
-</nav>
-<!-- HERO -->
-<section class="relative h-screen flex items-center justify-center text-center overflow-hidden">
-
-  <!-- Background Gradient -->
-  <div class="absolute inset-0 bg-gradient-to-r from-blue-50 via-white to-blue-100"></div>
-
-  <!-- Floating Tech Cards -->
-  <div class="absolute top-20 left-20 bg-white p-4 rounded-xl shadow rotate-[-10deg] hidden md:block">
-    <img src="https://cdn-icons-png.flaticon.com/512/919/919836.png" class="w-12">
-  </div>
-
-  <div class="absolute bottom-20 left-40 bg-white p-4 rounded-xl shadow rotate-[10deg] hidden md:block">
-    <img src="https://cdn-icons-png.flaticon.com/512/919/919852.png" class="w-12">
-  </div>
-
-  <div class="absolute top-32 right-20 bg-white p-4 rounded-xl shadow rotate-[8deg] hidden md:block">
-    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" class="w-12">
-  </div>
-
-  <!-- MAIN CONTENT -->
-  <div class="relative z-10 max-w-3xl px-6">
-
-    <p class="text-gray-500 uppercase tracking-wide mb-4">
-      Transforming Careers into IT Professionals
-    </p>
-
-    <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-      Build Your Future in IT with 
-      <span class="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
-        Yashwant Ghole
-      </span>
-    </h1>
-
-    <p class="text-gray-600 mb-6">
-      Learn Full Stack Java (Spring Boot, React, MySQL) with real-world projects and expert guidance.
-    </p>
-
-    <!-- CTA BUTTON -->
-    <button class="px-8 py-3 rounded-full text-white font-semibold 
-      bg-gradient-to-r from-blue-600 to-orange-400 shadow-lg hover:scale-105 transition">
-      Explore Courses
-    </button>
-
-  </div>
-
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="py-16 px-6 bg-white">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-
-    <!-- Image -->
-    <img src="Recent.png"
-         alt="Yashwant Ghole"
-         class="rounded-2xl shadow-lg w-80 mx-auto">
-
-    <!-- Content -->
-    <div>
-      <h2 class="text-3xl font-bold mb-4">About Trainer</h2>
-
-      <h3 class="text-xl font-semibold mb-2">
-        Yashwant Ghole
-      </h3>
-
-      <p class="text-gray-600 mb-4">
-        Full Stack Software Trainer from Dombivli with 5+ years of experience at
-        Laqshya Institute of skills training. Specialized in both frontend and backend technologies,
-        helping students become job-ready with practical skills.
-      </p>
-
-      <!-- Skills -->
-      <div class="mb-4">
-        <h4 class="font-semibold">Skills:</h4>
-        <p class="text-gray-600">
-          HTML, CSS, JavaScript, Bootstrap, Java, .NET, MySQL, MS SQL Server
-        </p>
-      </div>
-
-      <!-- Highlights -->
-      <ul class="space-y-2 text-gray-600">
-        <li>✔ 5+ Years Teaching Experience</li>
-        <li>✔ Full Stack Development Training</li>
-        <li>✔ Real-time Projects Guidance</li>
-        <li>✔ Interview Preparation Support</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<!-- COURSES -->
-<section id="courses" class="bg-gray-100 py-16 px-6">
-
-<h2 class="text-3xl text-center font-bold mb-10">Courses</h2>
-
-<div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-
-<!-- CARD 1 -->
-<div class="bg-white rounded-xl shadow overflow-hidden hover:scale-105 transition">
-
-  <img 
-    src="https://images.unsplash.com/photo-1518770660439-4636190af475"
-    class="h-48 w-full object-cover"
-    alt="Full Stack Java">
-
-  <div class="p-5">
-    <h3 class="font-bold text-lg mb-2">Full Stack Java</h3>
-    <p class="text-gray-600">Spring Boot + React + MySQL</p>
-  </div>
-
-</div>
-
-
-
-
-<!-- CARD 2 -->
-<div class="bg-white rounded-xl shadow overflow-hidden hover:scale-105 transition duration-300">
-
-  <img 
-    src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4"
-    class="h-48 w-full object-cover object-center"
-    alt="Core Java">
-
-  <div class="p-5">
-    <h3 class="font-bold text-lg mb-2">Core Java</h3>
-    <p class="text-gray-600">Basic to Advanced Concepts</p>
-  </div>
-
-</div>
-
-<!-- CARD 3 -->
-<div class="bg-white rounded-xl shadow overflow-hidden hover:scale-105 transition">
-
-  <img 
-    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
-    class="h-48 w-full object-cover"
-    alt="Frontend">
-
-  <div class="p-5">
-    <h3 class="font-bold text-lg mb-2">Frontend Development</h3>
-    <p class="text-gray-600">HTML, CSS, JS, Bootstrap</p>
-  </div>
-
-</div>
-
-</div>
-</section>
-
-
-<!-- ROADMAP -->
-<section id="roadmap" class="py-20 bg-gray-50">
-
-  <h2 class="text-4xl font-bold text-center mb-4">
-    Your Path to Career Success
-  </h2>
-
-  <p class="text-center text-gray-500 mb-12">
-    Step-by-step journey to become a Full Stack Developer
-  </p>
-
-  <div class="relative max-w-5xl mx-auto">
-
-    <!-- Vertical Line -->
-    <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-blue-200 h-full"></div>
-
-    <!-- STEP 1 -->
-    <div class="mb-12 flex justify-between items-center w-full">
-
-      <!-- LEFT CARD -->
-      <div class="w-5/12 bg-white p-6 rounded-xl shadow">
-        <h3 class="text-lg font-bold">01 - Enrollment</h3>
-        <p class="text-gray-600 mt-2">
-          Join training and choose your Full Stack path (Java / MERN).
-        </p>
-      </div>
-
-      <!-- CIRCLE -->
-      <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center z-10 shadow">
-        1
-      </div>
-
-      <!-- EMPTY RIGHT -->
-      <div class="w-5/12"></div>
-    </div>
-
-    <!-- STEP 2 -->
-    <div class="mb-12 flex justify-between items-center w-full">
-
-      <div class="w-5/12"></div>
-
-      <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center z-10 shadow">
-        2
-      </div>
-
-      <div class="w-5/12 bg-white p-6 rounded-xl shadow">
-        <h3 class="text-lg font-bold">02 - Fundamentals</h3>
-        <p class="text-gray-600 mt-2">
-          Learn Core Java, HTML, CSS, and JavaScript basics.
-        </p>
-      </div>
-    </div>
-
-    <!-- STEP 3 -->
-    <div class="mb-12 flex justify-between items-center w-full">
-
-      <div class="w-5/12 bg-white p-6 rounded-xl shadow">
-        <h3 class="text-lg font-bold">03 - Frontend</h3>
-        <p class="text-gray-600 mt-2">
-          Build UI using React, Bootstrap, Tailwind.
-        </p>
-      </div>
-
-      <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center z-10 shadow">
-        3
-      </div>
-
-      <div class="w-5/12"></div>
-    </div>
-
-    <!-- STEP 4 -->
-    <div class="mb-12 flex justify-between items-center w-full">
-
-      <div class="w-5/12"></div>
-
-      <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center z-10 shadow">
-        4
-      </div>
-
-      <div class="w-5/12 bg-white p-6 rounded-xl shadow">
-        <h3 class="text-lg font-bold">04 - Backend</h3>
-        <p class="text-gray-600 mt-2">
-          Learn Spring Boot, APIs, and database integration.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
-<!-- CONTACT SECTION -->
-<section id="contact" class="py-20 px-6 bg-gray-50">
-
-  <div class="max-w-lg mx-auto">
-
-    <!-- Header -->
-    <div class="text-center mb-8">
-      <h2 class="text-3xl font-bold text-gray-800">Get in Touch</h2>
-      <p class="text-gray-500 mt-2">We’d love to hear from you. Fill out the form below.</p>
-    </div>
-
-    <!-- Card -->
-    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-
-      <!-- Name -->
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-600 mb-1">Name</label>
-        <input
-          id="name"
-          type="text"
-          placeholder="Enter your name"
-          class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-      </div>
-
-      <!-- Email -->
-      <div class="mb-4">
-        <label class="block text-sm font-medium text-gray-600 mb-1">Email</label>
-        <input
-          id="email"
-          type="email"
-          placeholder="Enter your email"
-          class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-      </div>
-
-      <!-- Location -->
-      <div class="mb-6">
-        <label class="block text-sm font-medium text-gray-600 mb-1">Location</label>
-        <input
-          id="location"
-          type="text"
-          value="Dombivali"
-          class="w-full px-4 py-3 border border-gray-200 rounded-lg bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-      </div>
-
-      <!-- Button -->
-      <button
-        onclick="submitForm()"
-        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition shadow-md"
-      >
-        Submit Message
-      </button>
-
-      <!-- MAP -->
-      <div class="mt-8 rounded-2xl overflow-hidden shadow-md border border-gray-200">
-
-        <iframe
-          src="https://www.google.com/maps?q=Dombivli,Maharashtra&output=embed"
-          width="100%"
-          height="300"
-          style="border:0;"
-          loading="lazy"
-        ></iframe>
-
-      </div>
-
-    </div>
-  </div>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer class="relative text-white">
-
-  <!-- BACKGROUND LAYER -->
-  <div class="absolute inset-0 bg-gradient-to-r from-blue-700 via-indigo-700 to-purple-700"></div>
-
-  <!-- GLASS EFFECT LAYER -->
-  <div class="relative backdrop-blur-md bg-white/10 border-t border-white/20">
-
-    <div class="max-w-6xl mx-auto px-6 py-10">
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-
-        <!-- LEFT -->
-        <div class="text-center md:text-left">
-
-          <h2 class="text-2xl font-bold tracking-wide hover:scale-105 transition">
-            Prof Yash
-          </h2>
-
-          <p class="text-sm text-white/80 mt-2">
-            © 2026 All Rights Reserved
-          </p>
-
-        </div>
-
-        <!-- RIGHT -->
-        <div class="text-center md:text-right space-y-3">
-
-          <!-- PHONE -->
-          <p class="flex items-center justify-center md:justify-end gap-2 text-white/80 hover:text-white transition">
-            <i class="fa-solid fa-phone"></i>
-            <a href="tel:7350059415" class="underline">
-              7350059415
-            </a>
-          </p>
-
-          <!-- LOCATION -->
-          <p class="flex items-center justify-center md:justify-end gap-2 text-white/80 hover:text-white transition">
-            <i class="fa-solid fa-location-dot"></i>
-            Dombivli, Maharashtra
-          </p>
-
-        </div>
-
-      </div>
-
-      <!-- SOCIAL ICONS -->
-      <div class="mt-8 flex justify-center gap-6 text-xl">
-
-        <a href="#" class="hover:scale-125 hover:text-pink-300 transition">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
-
-        <a href="#" class="hover:scale-125 hover:text-green-300 transition">
-          <i class="fa-brands fa-whatsapp"></i>
-        </a>
-
-        <a href="#" class="hover:scale-125 hover:text-blue-300 transition">
-          <i class="fa-brands fa-linkedin"></i>
-        </a>
-
-      </div>
-
-      <!-- BOTTOM -->
-      <div class="mt-6 border-t border-white/20 pt-4 text-center text-xs text-white/60">
-        Webiste: https://fullstacktrainer.netlify.app/
-      </div>
-
-    </div>
-
-  </div>
-
-</footer>
-  
-  <script>
-
-// basic protection (NOT 100% secure)
-document.addEventListener("contextmenu", e => e.preventDefault());
-
-function goContact(){
- document.getElementById("contact").scrollIntoView();
-}
-
-async function submitForm(){
- let name = document.getElementById("name").value;
- let email = document.getElementById("email").value;
-
- if(!name || !email){
-   alert("Fill all fields");
-   return;
- }
-
- await fetch("http://localhost:8080/api/students",{
-   method:"POST",
-   headers:{"Content-Type":"application/json"},
-   body:JSON.stringify({name,email})
- });
-
- alert("Submitted!");
-}
-
-</script>
-
-<script>
-function toggleMenu() {
-  const menu = document.getElementById("mobileMenu");
-  menu.classList.toggle("hidden");
-}
-</script>
-
-<style>
-@media (max-width: 768px) {
-  #roadmap .flex {
-    flex-direction: column !important;
-  }
-  #roadmap .w-5\/12 {
-    width: 100% !important;
-  }
-}
-</style>
-<!--Hide Code  -->
-  <style>
-    body {
-      font-family: Arial;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Main content */
-    #main {
-      padding: 30px;
-      transition: 0.3s;
-    }
-
-    /* Blur effect */
-    .blurred {
-      filter: blur(8px);
-      pointer-events: none;
-      user-select: none;
-    }
-
-    /* Lock screen */
-    #lock {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-      color: red;
-      z-index: 99999;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-size: 22px;
-      text-align: center;
-    }
-
-    button {
-      margin-top: 15px;
-      padding: 10px 15px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-white shadow fixed-top">
+<div class="container">
 
-<div id="lock">
-  ⚠ SECURITY ALERT<br><br>
-  DevTools Detected<br>
-  Contact Prof Yash<br>
+<a class="navbar-brand fw-bold text-primary">
+<i class="fa-solid fa-code"></i> Prof Yash
+</a>
 
-  <button onclick="location.reload()">Reload</button>
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<div class="collapse navbar-collapse" id="menu">
+<ul class="navbar-nav ms-auto">
+
+<li><a class="nav-link" href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
+<li><a class="nav-link" href="#about"><i class="fa-solid fa-user"></i> About</a></li>
+<li><a class="nav-link" href="#courses"><i class="fa-solid fa-book"></i> Courses</a></li>
+<li><a class="nav-link" href="#roadmap"><i class="fa-solid fa-road"></i> Roadmap</a></li>
+<li><a class="nav-link" href="#contact"><i class="fa-solid fa-phone"></i> Contact</a></li>
+
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero d-flex align-items-center text-center">
+<div class="container">
+<h1 class="display-4 fw-bold">
+Build Your Future in IT with <span class="gradient-text">Prof Yash</span>
+</h1>
+<h4>Learn <span id="typing"></span></h4>
+<a href="#courses" class="btn btn-gradient mt-3">Explore</a>
 </div>
 
+<img src="https://cdn-icons-png.flaticon.com/512/919/919836.png" class="float-icon icon1">
+<img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" class="float-icon icon2">
+<img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" class="float-icon icon3">
+</section>
+
+
+<section id="about" class="bg-white py-5">
+<div class="container">
+
+<div class="row align-items-center g-5">
+
+<!-- LEFT IMAGE -->
+<div class="col-md-5 text-center">
+
+  <img src="recent.png"
+       class="img-fluid rounded-4 shadow about-img"
+       alt="Trainer">
+
+</div>
+
+<!-- RIGHT CONTENT -->
+<div class="col-md-7">
+
+  <div class="about-content">
+
+    <h2 class="fw-bold mb-3 d-flex align-items-center">
+      <i class="fa-solid fa-user-tie text-primary me-2"></i>
+      About Trainer
+    </h2>
+
+    <h4 class="text-primary mb-3">Yashwant Ghole</h4>
+
+    <p class="text-muted">
+      Full Stack Software Trainer with 5+ years of experience in teaching real-world 
+      technologies. Helping students become job-ready with hands-on projects.
+    </p>
+
+    <!-- SKILLS -->
+    <div class="mt-4">
+      <h6 class="fw-bold mb-2">
+        <i class="fa-solid fa-code text-success me-2"></i> Skills
+      </h6>
+
+      <div class="d-flex flex-wrap gap-2">
+        <span class="badge bg-primary">Java</span>
+        <span class="badge bg-success">Spring Boot</span>
+        <span class="badge bg-info text-dark">Bootstrap</span>
+        <span class="badge bg-dark">MySQL</span>
+        <span class="badge bg-warning text-dark">JavaScript</span>
+      </div>
+    </div>
+
+    <!-- HIGHLIGHTS -->
+    <div class="mt-4">
+
+      <h6 class="fw-bold mb-3">
+        <i class="fa-solid fa-star text-warning me-2"></i> Highlights
+      </h6>
+
+      <div class="highlight-item">
+        <i class="fa-solid fa-briefcase text-primary"></i>
+        <span>5+ Years Experience</span>
+      </div>
+
+      <div class="highlight-item">
+        <i class="fa-solid fa-users text-success"></i>
+        <span>100+ Students Trained</span>
+      </div>
+
+      <div class="highlight-item">
+        <i class="fa-solid fa-laptop-code text-info"></i>
+        <span>Real-time Projects</span>
+      </div>
+
+      <div class="highlight-item">
+        <i class="fa-solid fa-bullseye text-danger"></i>
+        <span>Interview Preparation</span>
+      </div>
+
+    </div>
+
+    <!-- BUTTON -->
+    <a href="#contact" class="btn btn-gradient mt-4">
+      <i class="fa-solid fa-paper-plane me-2"></i> Enroll Now
+    </a>
+
+  </div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- COURSES -->
+<section id="courses" class="bg-light">
+<div class="container">
+
+<h2 class="text-center fw-bold mb-5 course-title">
+  <i class="fa-solid fa-graduation-cap me-2"></i>
+  Our Courses
+</h2>
+
+<div class="row g-4">
+
+<!-- CARD 1 -->
+<div class="col-md-4">
+<div class="card course-card h-100">
+
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475" class="course-img">
+
+<div class="card-body text-center">
+
+<h5 class="fw-bold">Full Stack Java 💻</h5>
+
+<p class="text-muted">
+Spring Boot + React + MySQL
+</p>
+
+<div class="mb-3">
+<i class="fa-brands fa-java text-danger fs-4 me-2"></i>
+<i class="fa-brands fa-react text-info fs-4 me-2"></i>
+<i class="fa-solid fa-database text-primary fs-4"></i>
+</div>
+
+<a href="#contact" class="btn btn-gradient w-100 d-flex align-items-center justify-content-center">
+  <i class="fa-solid fa-user-plus me-2"></i>
+  Enroll Now
+</a>
+</div>
+</div>
+</div>
+
+<!-- CARD 2 -->
+<div class="col-md-4">
+<div class="card course-card h-100">
+
+<img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4" class="course-img">
+
+<div class="card-body text-center">
+
+<h5 class="fw-bold">Core Java ☕</h5>
+
+<p class="text-muted">
+Basic to Advanced Concepts
+</p>
+
+<div class="mb-3">
+<i class="fa-brands fa-java text-danger fs-4"></i>
+</div>
+
+<a href="#contact" class="btn btn-gradient w-100 d-flex align-items-center justify-content-center">
+  <i class="fa-solid fa-user-plus me-2"></i>
+  Enroll Now
+</a>
+</div>
+</div>
+</div>
+
+<!-- CARD 3 -->
+<div class="col-md-4">
+<div class="card course-card h-100">
+
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" class="course-img">
+
+<div class="card-body text-center">
+
+<h5 class="fw-bold">Frontend Development 🎨</h5>
+
+<p class="text-muted">
+HTML, CSS, JS, Bootstrap
+</p>
+
+<div class="mb-3">
+<i class="fa-brands fa-html5 text-danger fs-4 me-2"></i>
+<i class="fa-brands fa-css3-alt text-primary fs-4 me-2"></i>
+<i class="fa-brands fa-js text-warning fs-4"></i>
+</div>
+
+<a href="#contact" class="btn btn-gradient w-100 d-flex align-items-center justify-content-center">
+  <i class="fa-solid fa-user-plus me-2"></i>
+  Enroll Now
+</a>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+<!-- Roadmap -->
+<section id="roadmap" class="bg-light py-5">
+
+<div class="container">
+
+<h2 class="text-center fw-bold mb-5 roadmap-title">
+  <i class="fa-solid fa-road text-primary me-2"></i>
+  Full Stack Java Roadmap
+</h2>
+
+<div class="row g-4">
+
+<!-- STEP 1 -->
+<div class="col-md-6">
+  <div class="card roadmap-card p-3">
+    <h5><i class="fa-solid fa-mug-hot text-warning me-2"></i> Core Java</h5>
+    <p class="text-muted">OOP, Collections, Exception Handling</p>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="col-md-6">
+  <div class="card roadmap-card p-3">
+    <h5><i class="fa-solid fa-gears text-secondary me-2"></i> Advanced Java</h5>
+    <p class="text-muted">JDBC, Servlets, JSP</p>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="col-md-6">
+  <div class="card roadmap-card p-3">
+    <h5><i class="fa-solid fa-palette text-danger me-2"></i> Frontend</h5>
+    <p class="text-muted">HTML, CSS, JS, Bootstrap</p>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="col-md-6">
+  <div class="card roadmap-card p-3">
+    <h5><i class="fa-solid fa-leaf text-success me-2"></i> Spring Boot</h5>
+    <p class="text-muted">REST APIs, MVC, Security</p>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="col-md-6">
+  <div class="card roadmap-card p-3">
+    <h5><i class="fa-solid fa-database text-primary me-2"></i> Database</h5>
+    <p class="text-muted">MySQL, CRUD Operations</p>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="col-md-6">
+  <div class="card roadmap-card p-3">
+    <h5><i class="fa-solid fa-laptop-code text-info me-2"></i> Projects</h5>
+    <p class="text-muted">Real-time Full Stack Apps</p>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="col-md-6 mx-auto">
+  <div class="card roadmap-card p-3 text-center">
+    <h5><i class="fa-solid fa-rocket text-danger me-2"></i> Placement</h5>
+    <p class="text-muted">Interview + Job Support</p>
+  </div>
+</div>
+
+</div>
+</div>
+
+</section>
+
+<section id="contact" class="py-5 bg-light">
+
+<div class="container">
+
+<!-- HEADING -->
+<h2 class="text-center fw-bold mb-5 contact-title">
+  <i class="fa-solid fa-phone text-primary me-2"></i>
+  Contact Us
+</h2>
+
+<div class="row g-4">
+
+<!-- LEFT FORM -->
+<div class="col-md-6">
+
+<div class="card shadow border-0 p-4">
+
+<h5 class="mb-4">
+  <i class="fa-solid fa-paper-plane text-success me-2"></i>
+  Send Message
+</h5>
+
+<!-- NAME -->
+<div class="mb-3">
+<label class="form-label">Name</label>
+<div class="input-group">
+<span class="input-group-text">
+  <i class="fa-solid fa-user"></i>
+</span>
+<input id="name" class="form-control" placeholder="Enter your name">
+</div>
+</div>
+
+<!-- EMAIL -->
+<div class="mb-3">
+<label class="form-label">Email</label>
+<div class="input-group">
+<span class="input-group-text">
+  <i class="fa-solid fa-envelope"></i>
+</span>
+<input id="email" type="email" class="form-control" placeholder="Enter your email">
+</div>
+</div>
+
+<!-- LOCATION -->
+<div class="mb-4">
+<label class="form-label">Location</label>
+<div class="input-group">
+<span class="input-group-text">
+  <i class="fa-solid fa-location-dot"></i>
+</span>
+<input value="Dombivli, Maharashtra" class="form-control" readonly>
+</div>
+</div>
+
+<!-- BUTTON -->
+<button onclick="submitForm()" class="btn btn-gradient w-100">
+  <i class="fa-solid fa-paper-plane me-2"></i>
+  Submit Message
+</button>
+
+</div>
+</div>
+
+<!-- RIGHT MAP -->
+<div class="col-md-6">
+
+<div class="card shadow border-0 h-100 overflow-hidden">
+
+<iframe
+src="https://www.google.com/maps?q=Dombivli,Maharashtra&output=embed"
+width="100%"
+height="100%"
+style="border:0; min-height:350px;"
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</section>
+
+<footer class="bg-dark text-white text-center py-5">
+
+<div class="container">
+
+  <!-- NAME -->
+  <h4 class="fw-bold mb-1">Prof Yash</h4>
+
+  <!-- ROLE -->
+  <p class="text-light mb-3">
+    <i class="fa-solid fa-laptop-code me-2"></i>
+    Full Stack Software Trainer
+  </p>
+
+  <!-- SOCIAL ICONS -->
+  <div class="d-flex justify-content-center gap-3 mb-3">
+
+    <a href="https://wa.me/917350059415"
+       class="btn btn-success rounded-circle social-icon">
+       <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="#"
+       class="btn btn-danger rounded-circle social-icon">
+       <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="#"
+       class="btn btn-primary rounded-circle social-icon">
+       <i class="fab fa-linkedin"></i>
+    </a>
+
+  </div>
+
+  <!-- CONTACT INFO -->
+  <p class="small text-light mb-1">
+    <i class="fa-solid fa-phone me-2"></i> 7350059415
+  </p>
+
+  <p class="small text-light">
+    <i class="fa-solid fa-location-dot me-2"></i> Dombivli, Maharashtra
+  </p>
+
+  <!-- COPYRIGHT -->
+  <p class="mt-3 small text-secondary">
+    © 2026 All Rights Reserved
+  </p>
+
+</div>
+
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/917350059415"
+   class="btn btn-success shadow rounded-circle whatsapp-float d-flex align-items-center justify-content-center">
+   <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- CHAT BUTTON -->
+<button id="chatBtn" onclick="toggleChat()"
+class="btn btn-primary shadow rounded-circle chat-btn">
+<i class="fa-solid fa-comments"></i>
+</button>
+
+<!-- CHAT BOX -->
+<div id="chatBox" class="card shadow chat-box">
+
+  <!-- HEADER -->
+  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+    
+    <span>
+      <i class="fa-solid fa-headset"></i> Support
+    </span>
+
+    <button class="btn btn-sm btn-light" onclick="toggleChat()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+
+  </div>
+
+  <!-- BODY -->
+  <div id="chatMessages" class="card-body chat-body"></div>
+
+  <!-- FOOTER -->
+  <div class="card-footer d-flex p-2">
+    <input id="userInput" class="form-control me-2" placeholder="Type message...">
+    
+    <button class="btn btn-primary" onclick="sendMessage()">
+      <i class="fa-solid fa-paper-plane"></i>
+    </button>
+  </div>
+
+
+</div>
+
+<div class="position-fixed bottom-0 end-0 p-3">
+  <div id="toast" class="toast align-items-center text-bg-success border-0">
+    <div class="d-flex">
+      <div class="toast-body">
+        <i class="fa-solid fa-circle-check me-2"></i>
+        Submitted Successfully
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
-  let lock = document.getElementById("lock");
-  let main = document.getElementById("main");
 
-  function activateLock() {
-    lock.style.display = "flex";
-    main.classList.add("blurred");
-  }
+/* typing */
+const words=["Core Java","Spring Boot","Bootstrup","Full Stack"];
+let i=0,j=0,d=false;
+function type(){
+let w=words[i];
+document.getElementById("typing").innerHTML=w.substring(0,j);
+if(!d && j<w.length){j++;}
+else if(d && j>0){j--;}
+else{d=!d;if(!d)i=(i+1)%words.length;}
+setTimeout(type,d?50:100);
+}
+type();
 
-  // Detect DevTools via window size change
-  setInterval(() => {
-    let widthDiff = window.outerWidth - window.innerWidth;
-    let heightDiff = window.outerHeight - window.innerHeight;
+/* form */
+function submitForm(){
 
-    if (widthDiff > 150 || heightDiff > 150) {
-      activateLock();
-    }
-  }, 500);
+let nameInput = document.getElementById("name");
+let emailInput = document.getElementById("email");
 
-  // Block right click
-  document.addEventListener("contextmenu", e => e.preventDefault());
+if(!nameInput.value || !emailInput.value){
+  alert("Fill all fields");
+  return;
+}
 
-  // Block shortcuts
-  document.addEventListener("keydown", function(e) {
-    if (
-      e.keyCode === 123 || // F12
-      (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
-      (e.ctrlKey && e.shiftKey && e.keyCode === 74) || // Ctrl+Shift+J
-      (e.ctrlKey && e.keyCode === 85) // Ctrl+U
-    ) {
-      activateLock();
-      e.preventDefault();
-    }
-  });
+// show toast
+let toastEl = document.getElementById("toast");
+let toast = new bootstrap.Toast(toastEl);
+toast.show();
+
+}
+/* chat */
+function toggleChat(){
+chatBox.style.display=chatBox.style.display==="flex"?"none":"flex";
+}
+function sendMessage(){
+chatMessages.innerHTML+=`<div class="user">${userInput.value}</div>`;
+userInput.value="";
+setTimeout(()=>{chatMessages.innerHTML+=`<div class="bot">Contact on WhatsApp 📱</div>`;},500);
+}
+
+
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
